@@ -7,6 +7,7 @@ import NotificationPage from "./pages/NotificationPage";
 import CallPage from "./pages/CallPage";
 import ChatPage from "./pages/ChatPage";
 import OnboardingPage from "./pages/OnboardingPage";
+import FriendPage from "./pages/FriendPage";
 import { Toaster } from "react-hot-toast";
 
 import PageLoader from "./components/PageLoader";
@@ -109,6 +110,18 @@ const App = () => {
               )
             ) : (
               <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/friendsList"
+          element={
+            isAuthenticated && isOnboarded ? (
+              <Layout showSidebar={true}>
+                <FriendPage />
+              </Layout>
+            ) : (
+              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
             )
           }
         />
